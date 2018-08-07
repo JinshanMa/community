@@ -2,7 +2,7 @@ package com.fortune.redis;
 
 import redis.clients.jedis.JedisPubSub;
 
-public class EventImplment extends JedisPubSub{
+public class Subscriber extends JedisPubSub{
 
 	
 	 public void onMessage(String channel, String message) {
