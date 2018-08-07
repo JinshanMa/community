@@ -29,9 +29,11 @@ public class SubsribeThread extends Thread {
 	//jedis 客户端资源
 	Jedis jedis;
 	
+	
 	//该客户端所订阅的所有频道列表
 	private final List<String> subsList;
 	
+	private boolean isFireRun = false;
 	
 	/**
 	 * 唯一构造函数，设置jedis资源池和订阅消息处理类
@@ -54,6 +56,10 @@ public class SubsribeThread extends Thread {
 		
 		if(subsList != null) {
 			subsList.add(channel);
+			if(isFireRun) {
+				jedis.subscribe(subsriber, channel);
+			}
+			
 			return true;
 		}else {
 			if(log != null)
@@ -71,7 +77,9 @@ public class SubsribeThread extends Thread {
 		
 		if(subsList != null) {
 			subsList.addAll(channels);
-			
+			if(isFireRun) {
+				jedis.subscribe(subsriber, channels.toArray(new String[] {}));
+			}
 			return true;
 		}else {
 			if(log != null)
@@ -80,6 +88,9 @@ public class SubsribeThread extends Thread {
 		}
 		
 	}
+	
+	
+	
 	
 	
 	/**
@@ -102,6 +113,8 @@ public class SubsribeThread extends Thread {
 				
 				try {
 					jedis.subscribe(subsriber, subsList.toArray(new String[]{}));
+					
+					isFireRun = true;
 				}catch(Exception e) {
 					
 					if(log != null)

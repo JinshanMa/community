@@ -7,5 +7,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>MRedisClient</module>
+    <module>AppServerDeamon</module>
+    <module>DServerDaemon</module>
   </modules>
 </project>
