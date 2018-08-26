@@ -1,0 +1,60 @@
+2018-08-09 12:57:27,850 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.107.129,port:6379
+2018-08-09 12:57:27,901 [com.fortune.redis.SubsribeThread-]-[INFO] subsribe channels: [],thread will be blocked
+2018-08-09 12:57:27,903 [com.fortune.redis.SubsribeThread-]-[INFO] substribeChannelList is empty! exiting thread!
+2018-08-09 12:58:48,690 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.107.129,port:6379
+2018-08-09 12:58:48,747 [com.fortune.redis.SubsribeThread-]-[INFO] subsribe channels: [],thread will be blocked
+2018-08-09 12:58:48,749 [com.fortune.redis.SubsribeThread-]-[INFO] substribeChannelList is empty! exiting thread!
+2018-08-11 21:04:59,423 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.107.129,port:6379
+2018-08-11 21:10:33,650 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-11 21:10:33,690 [com.fortune.redis.SubsribeThread-]-[INFO] subsribe channels: [],thread will be blocked
+2018-08-11 21:10:33,690 [com.fortune.redis.SubsribeThread-]-[INFO] substribeChannelList is empty!
+2018-08-11 21:10:53,038 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-11 21:10:53,067 [com.fortune.redis.SubsribeThread-]-[INFO] subsribe channels: [],thread will be blocked
+2018-08-11 21:10:53,083 [com.fortune.redis.SubsribeThread-]-[INFO] substribeChannelList is empty!
+2018-08-11 21:12:33,435 [com.fortune.redis.SubsribeThread-]-[INFO] publish Channel:appch1,message:helloworld
+2018-08-11 21:13:37,014 [com.fortune.redis.SubsribeThread-]-[INFO] publish Channel:appch1,message:helloworld
+2018-08-11 21:14:18,427 [com.fortune.redis.SubsribeThread-]-[INFO] publish Channel:appch3,message:hwksjdflak
+2018-08-11 23:30:26,833 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-11 23:30:48,787 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 00:03:29,522 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 00:03:59,965 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 00:05:08,424 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 00:05:26,882 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 00:06:23,315 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 00:06:23,370 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [],thread will be blocked
+2018-08-12 00:06:23,370 [com.fortune.redis.InitSubsribeThread-]-[INFO] substribeChannelList is empty!
+2018-08-12 00:14:16,763 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 00:14:47,487 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [devch1, devch2],thread will be blocked
+2018-08-12 00:38:38,263 [com.fortune.redis.InitSubsribeThread-]-[INFO] jedis subscribe interface is throws error:java.net.SocketException: Connection reset
+2018-08-12 00:38:38,263 [com.fortune.redis.InitSubsribeThread-]-[INFO] jedis subscribe interface is throws error:java.net.SocketException: Connection reset
+2018-08-12 00:38:38,263 [com.fortune.redis.InitSubsribeThread-]-[INFO] jedis closing...
+2018-08-12 00:38:38,263 [com.fortune.redis.InitSubsribeThread-]-[INFO] jedis closing...
+2018-08-12 01:17:59,870 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 01:18:13,567 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 01:18:24,327 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 01:18:38,182 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [devch1, devch2],thread will be blocked
+2018-08-12 01:19:08,903 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:appch1,message:helloworld-thisisappserver
+2018-08-12 01:19:56,744 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:appch1,message:thisisdserver
+2018-08-12 01:20:45,508 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:devch1,message:thisisdserver
+2018-08-12 02:31:06,061 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 02:53:04,040 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 02:53:18,397 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 02:53:33,175 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [devch1, devch2],thread will be blocked
+2018-08-12 03:20:07,834 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 03:20:23,598 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 03:20:35,094 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 03:21:53,741 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [devch1, devch2],thread will be blocked
+2018-08-12 03:22:43,517 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:devch1,message:deviceisonline
+2018-08-12 03:23:49,700 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:devch1,message:deviceisisisiisisonine
+2018-08-12 03:24:38,950 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:appch1,message:controldevice
+2018-08-12 03:34:23,175 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:appch1,message:jsldkfjlask
+2018-08-12 03:34:37,101 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 03:36:41,712 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 15:48:45,502 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 15:49:03,887 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked
+2018-08-12 15:49:40,385 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 15:49:48,441 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [devch1, devch2],thread will be blocked
+2018-08-12 15:50:22,084 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:appch1,message:AH2D_CONTROL
+2018-08-12 15:51:05,446 [com.fortune.redis.InitSubsribeThread-]-[INFO] publish Channel:appch2,message:SHANGXIANG
+2018-08-12 15:51:14,506 [com.fortune.redis.JedisClient-]-[INFO] redis pool is start, ip:192.168.58.128,port:6379
+2018-08-12 15:51:33,347 [com.fortune.redis.InitSubsribeThread-]-[INFO] subsribe channels: [appch1, appch2],thread will be blocked

@@ -1,0 +1,11 @@
+AH2AH_*
+AH2AH_AddDevice2Group
+AH2AH_AddGroup
+AH2AH_BindMacDevice
+AH2AH_ChangeDeviceInfo
+AH2AH_ChangeUserInfo
+AH2AH_DelDeviceFromGroup
+AH2AH_DeleteGroup
+AH2AH_ModifyGroupDevices
+AH2AH_ModifyGroup
+AH2AH_UnbindMacDevice

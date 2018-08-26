@@ -8,15 +8,19 @@ import com.fortune.redis.JedisClient;
 
 public class DJedisClient {
 
+	
+	
 
 	JedisClient jedis = null;
 	
-	public DJedisClient() {
+	//创建JedisClient客户端
+	public DJedisClient(String jedisClientId) {
 		
-		jedis = new JedisClient();
+		jedis = new JedisClient(jedisClientId);
 //		jedis.initSubPub();
 	}
 	
+	//订阅频道
 	public void subscribeChannels(String ...strings) {
 		
 		if(strings.length > 1) {
@@ -34,10 +38,12 @@ public class DJedisClient {
 		
 	}
 
-	
+	//启动jedis
 	public void start() {
 		jedis.initSubPub();
 	}
+	
+	//发送向特定的频道发送消息
 	public void publishChannelMsg(String channel,String msg) {
 		jedis.publishMsgByChannel(channel, msg);
 	}

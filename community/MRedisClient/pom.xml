@@ -32,21 +32,21 @@
 	    <artifactId>jedis</artifactId>
 	    <version>2.9.0</version>
 	</dependency>
-	<!-- <dependency>
+    <dependency>
 		<groupId>org.apache.logging.log4j</groupId>
 		<artifactId>log4j-core</artifactId>
 		<version>2.10.0</version>
-		</dependency> -->
+		</dependency>
 	<dependency>
 		<groupId>org.apache.logging.log4j</groupId>
 		<artifactId>log4j-slf4j-impl</artifactId>
 		<version>2.10.0</version>
 	</dependency>
-	<!--
+	
 	<dependency>
 	    <groupId>com.lmax</groupId>
 	    <artifactId>disruptor</artifactId>
-	    <version>3.3.0</version>
-	</dependency> -->
+	    <version>3.3.7</version>
+	</dependency>
   </dependencies>
 </project>

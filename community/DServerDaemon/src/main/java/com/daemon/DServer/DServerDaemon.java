@@ -13,10 +13,13 @@ public class DServerDaemon {
 	BufferedReader reader=null;
 	
 	public DServerDaemon() {
-		redisClient = new DJedisClient();
+		redisClient = new DJedisClient("devId1");
 		reader = new BufferedReader(new InputStreamReader(System.in));
 	}
 	public void start() {
+		boolean isInitSubs = false;
+		//redisClient.start();
+		System.out.println("Please input subscribe channel (or channels):");
 		while(true) {
 			
 			
@@ -25,7 +28,7 @@ public class DServerDaemon {
 			try {
 				line = reader.readLine();
 				String[] msgs = line.split(":");
-				if(msgs.length<1)
+				if(msgs.length<=1)
 					continue;
 				String cmd = msgs[0];
 				String content = msgs[1];
@@ -34,8 +37,22 @@ public class DServerDaemon {
 				
 				switch(cmd) {
 					case "subch":
-						if(cons.length > 0)
-						redisClient.subscribeChannels(cons);
+						if(!isInitSubs){
+							
+							if(cons.length > 0){
+								redisClient.subscribeChannels(cons);
+								isInitSubs = true;
+								redisClient.start();
+								
+								continue;
+							}
+							else{
+								System.out.println("subscribe channels is empty!");
+							}
+						}else{
+							System.out.println("has been inited channels!");
+							continue;
+						}
 					break;
 					case "pubmsg":
 						if(cons.length == 2) {

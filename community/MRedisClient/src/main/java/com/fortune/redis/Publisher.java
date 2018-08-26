@@ -1,5 +1,7 @@
 package com.fortune.redis;
 
+import java.util.Set;
+
 import org.slf4j.Logger;
 
 import com.fortune.redis.queue.ChannelMessage;
@@ -14,7 +16,7 @@ public class Publisher extends Thread {
 	private static Logger log;
 	static {
 		if(log == null)
-			log = LoggerUtil.getClassLogger(SubsribeThread.class);
+			log = LoggerUtil.getClassLogger(InitSubsribeThread.class);
 	}
 	
 	private ChannelResQueue resPool;
@@ -46,6 +48,22 @@ public class Publisher extends Thread {
 				
 				channelMsg = getResPool().getChannelRes();
 				System.out.println("redis send---,");
+				Set<String> subkeys = jedis.smembers("fortuneSubcrbeKey");
+				
+				for(String s:subkeys){
+					if(jedis.exists(s+".channel")){
+						if(jedis.sismember(s+".channel", channelMsg.getChannel())){
+							long llen = jedis.llen(s+".channel."+channelMsg.getChannel());
+							if(llen > 0){
+								jedis.ltrim(s+".channel."+channelMsg.getChannel(), 1, 0);
+							}
+							jedis.lpush(s+".channel."+channelMsg.getChannel(), channelMsg.getMessage());
+						}
+					}
+//					jedis.lpush(s,channelMsg.getMessage());
+					
+				}
+				
 				jedis.publish(channelMsg.getChannel(), channelMsg.getMessage());
 				if(log != null)
 				log.info("publish Channel:"+channelMsg.getChannel()+",message:"+channelMsg.getMessage());

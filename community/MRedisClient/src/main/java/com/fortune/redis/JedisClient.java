@@ -16,21 +16,30 @@ public class JedisClient {
 	public static Logger  log = LoggerUtil.getClassLogger(JedisClient.class);
 	
 	//此处可做成配置文件配置
-	String redisIp = "192.168.8.40";
+	String redisIp = "192.168.58.128";
 	
 	//此处可做成配置文件配置
 	int port = 6379;
+	
+	String clientId;
 	
 	JedisPoolConfig config = new JedisPoolConfig();
 	
 	ChannelResQueue queue = new ChannelResQueue();
 	
-	SubsribeThread subThread = null;
+	InitSubsribeThread subThread = null;
 	
 	Publisher publisher = null;
 	
-	public JedisClient(){
+	public JedisClient(String jedisClientId){
 			
+		if(jedisClientId != null)
+			clientId = jedisClientId;
+		else{
+			
+			log.error("jedis clientId is null can not connect to server！");
+			return ;
+		}
 		config.setMaxIdle(10);
 		config.setMaxTotal(100);
 		config.setMaxWaitMillis(10000);
@@ -40,7 +49,9 @@ public class JedisClient {
 		
 		log.info("redis pool is start, ip:"+redisIp+",port:"+port);
 
-		subThread = new SubsribeThread(jedisPool,new Subscriber());
+		Subscriber subscriber = new Subscriber(jedisPool.getResource(),clientId);
+		
+		subThread = new InitSubsribeThread(jedisPool.getResource(),subscriber,clientId);
 		
 		publisher = new Publisher(jedisPool, queue);
 			
@@ -52,21 +63,26 @@ public class JedisClient {
 		publisher.start();
 		
 	}
-	
+	//发送消息和指定的频道
 	public void publishMsgByChannel(String channel,String msg) {
 		ChannelMessage cm = new ChannelMessage();
 		cm.setChannel(channel);
 		cm.setMessage(msg);
+		//向消息发送对象的资源队列放进要发送的消息和频道信息
 		publisher.putRes(cm);
 		
 	}
 	
+	
+	//增加单个订阅频道
 	public void addSubscribeChannel(String channel) {
 		
-		subThread.addSubcribeChannel(channel);
+		subThread.addInitSubcribeChannel(channel);
 	}
+	
+	//增加多个订阅频道
 	public void addSubscribeChannels(List<String> channels) {
-		
-		subThread.addSubcribeChannels(channels);
+		//向订阅线程的队列中添加频道消息
+		subThread.addInitSubcribeChannels(channels);
 	}
 }

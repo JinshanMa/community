@@ -1,13 +1,29 @@
 package com.fortune.redis;
 
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
 public class Subscriber extends JedisPubSub{
 
+	private Jedis jedis;
+	private String jedisId;
+	
+	public Subscriber(Jedis jedisClient,String jedisId){
+		jedis = jedisClient;
+		this.jedisId = jedisId;
+	}
 	
 	 public void onMessage(String channel, String message) {
+		 //断线时,查看对应的key值是否存在，如存在则，取其消息
+		 if(jedis.exists(jedisId+".channel."+channel)){
+			 
+			 //此处可视为一个队列，从右端弹出数据
+			 jedis.rpop(jedisId+".channel."+channel);
+			 System.out.println("has remove jedis list message!");
+		 }
 		 System.out.println("onMessage method:-channel:"+channel+",message:"+message);
-	  }
+	 }
+	 
 
 	  public void onPMessage(String pattern, String channel, String message) {
 		  

@@ -11,12 +11,12 @@ public class AppJedisClient {
 
 	JedisClient jedis = null;
 	
-	public AppJedisClient() {
+	public AppJedisClient(String jedisClientId) {
 		
-		jedis = new JedisClient();
+		jedis = new JedisClient(jedisClientId);
 //		jedis.initSubPub();
 	}
-	
+	//订阅频道，此处只在redis客户端初始化的时候调用，同时进行频道的订阅
 	public void subscribeChannels(String ...strings) {
 		
 		if(strings.length > 1) {
@@ -25,6 +25,7 @@ public class AppJedisClient {
 			for(String s:channels) {
 				listChannels.add(s);
 			}
+			//调用MRedisClient工程模块的接口进行频道订阅
 			jedis.addSubscribeChannels(listChannels);
 		}
 		if(strings.length == 1) {

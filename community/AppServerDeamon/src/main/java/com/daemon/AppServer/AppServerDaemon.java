@@ -13,19 +13,23 @@ public class AppServerDaemon {
 	BufferedReader reader=null;
 	
 	public AppServerDaemon() {
-		redisClient = new AppJedisClient();
+		redisClient = new AppJedisClient("AppId");
 		reader = new BufferedReader(new InputStreamReader(System.in));
 	}
 	public void start() {
+		
+		boolean isInitSubs = false;
+		
+		System.out.println("Please input subscribe channel (or channels):");
+		
 		while(true) {
-			
 			
 			String line = null;
 			
 			try {
 				line = reader.readLine();
 				String[] msgs = line.split(":");
-				if(msgs.length<1)
+				if(msgs.length<=1)
 					continue;
 				String cmd = msgs[0];
 				String content = msgs[1];
@@ -34,8 +38,18 @@ public class AppServerDaemon {
 				
 				switch(cmd) {
 					case "subch":
-						if(cons.length > 0)
-						redisClient.subscribeChannels(cons);
+						if(!isInitSubs){
+							if(cons.length > 0){
+								redisClient.subscribeChannels(cons);
+								isInitSubs = true;
+								redisClient.start();
+							}else{
+								System.out.println("subscribe channels is empty!");
+							}
+						}else{
+							System.out.println("has been inited channels!");
+							continue;
+						}
 					break;
 					case "pubmsg":
 						if(cons.length == 2) {
